@@ -25,6 +25,7 @@ const UsuarioValidation = {
             password:Joi.string().required(), 
         }
     },
+    
 
     update:{
         body:{

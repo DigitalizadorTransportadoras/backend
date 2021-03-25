@@ -8,8 +8,6 @@ const TransportadoraController = require("../../../controllers/TransportadoraCon
 const transportadoraController = new TransportadoraController();
 
 router.get("/", transportadoraController.index);
-router.get("/rotateste", transportadoraController.index);
-
 router.get("/:id", Validation(TransportadoraValidation.show), transportadoraController.show); // testado
 router.get("/nome/:nome", Validation(TransportadoraValidation.showByName), transportadoraController.showByName); // testado
 

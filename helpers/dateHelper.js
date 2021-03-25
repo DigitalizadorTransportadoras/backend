@@ -1,7 +1,7 @@
 function dateFormatHelper(d) {
 
-    const day = d.getDay()
-    const month = d.getMonth()
+    const day = d.getDate()
+    const month = d.getMonth() + 1
     const year = d.getFullYear()
 
     return `${day}/${month}/${year}`

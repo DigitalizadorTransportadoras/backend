@@ -14,14 +14,14 @@ class DigitalizacaoConstroller {
 
     //GET id/
     show(req, res, next) {
-        Digitalizacao.findById(req.params.id).select("_id transportadora qtde_digitalizacoes horarios")
+        Digitalizacao.findById(req.params.id).select("_id transportadora qtde_digitalizacoes horarios createdAt updatedAt")
             .then(digitalizacao => res.send({ digitalizacao }))
             .catch(next);
     }
 
     //POST
     store(req, res, next) {
-        const { transportadora, qtde_digitalizacoes } = req.body;
+        const { transportadora, qtde_digitalizacoes } = req.query;
         const digitalizacao = new Digitalizacao({ transportadora, qtde_digitalizacoes });
 
         Digitalizacao.findOne({ 'transportadora': transportadora }).sort({ createdAt: -1 }).then(d => {
@@ -34,12 +34,13 @@ class DigitalizacaoConstroller {
 
             if (updatedAt === current) {
                 if (!d) return res.status(422).send({ error: "Digitalizacao não existe." });
-                if (qtde_digitalizacoes) d.qtde_digitalizacoes = d.qtde_digitalizacoes + qtde_digitalizacoes;
+                if (qtde_digitalizacoes) d.qtde_digitalizacoes = Number(d.qtde_digitalizacoes)
+                    + Number(qtde_digitalizacoes);
 
                 d.save().then(() => res.send({ d })).catch(next);
             } else {
                 digitalizacao.save().then(() => res.send({ digitalizacao })).catch(next);
-                return
+                //return
             }
         }).catch(next);
     }

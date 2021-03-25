@@ -1,0 +1,4 @@
+{
+    "dbTest":"mongodb+srv://clientdigitalizador:digitalizador@cluster0.xafgs.mongodb.net/digitalizador?retryWrites=true&w=majority&ssl=true",
+    "dbProd":"mongodb+srv://clientdigitalizador:digitalizador@cluster0.xafgs.mongodb.net/digitalizador?retryWrites=true&w=majority&ssl=true"
+}

@@ -13,10 +13,7 @@ class TransportadoraConstroller {
     //GET id/
     show(req, res, next) {
         Transportadora.findById(req.params.id).select("_id nome cnpj email telefones endereco")
-            .then(transportadora => {
-                res.send({ transportadora })
-                console.log(transportadora)
-            })
+            .then(transportadora => res.send({ transportadora }))
             .catch(next);
     }
 
